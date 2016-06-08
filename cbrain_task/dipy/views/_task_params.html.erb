@@ -1,0 +1,15 @@
+
+<H3>Dipy Simple Pipeline</H3>
+
+List of Userfiles selected:<BR>
+
+<UL>
+  <% (params[:interface_userfile_ids].presence || []).each do |id| %>
+  <LI><%= link_to_userfile_if_accessible(id) %></LI>
+  <% end %>
+</UL>
+
+<P>
+
+There are no parameters that can be set here, for the moment.
+

@@ -1,0 +1,24 @@
+
+<STRONG>Input:</STRONG>
+<P>
+
+<UL>
+<% (params[:interface_userfile_ids].presence || []).each do |id| %>
+  <LI>Userfile: <%= link_to_userfile_if_accessible id %></LI>
+<% end %>
+</UL>
+
+<BR>
+<STRONG>Outputs:</STRONG>
+<P>
+
+<UL>
+<% (params[:output_ids].presence || []).each do |id| %>
+  <LI>Userfile: <%= link_to_userfile_if_accessible id %></LI>
+<% end %>
+</UL>
+
+<% if params[:output_ids].blank? %>
+  (No output produced yet)
+<% end %>
+
