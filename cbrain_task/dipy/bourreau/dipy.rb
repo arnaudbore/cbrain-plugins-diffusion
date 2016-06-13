@@ -31,10 +31,6 @@ class CbrainTask::Dipy < ClusterTask
       # Because the current dipy_simple_pipeline script is not clean with its
       # inputs, we have to create a dummy input structure
       safe_mkdir("#{inputdir}/#{userfile.id}")
-      #make_available() has a bug, so for the moment I comment out those three lines
-      #make_available(userfile,"#{inputdir}/#{userfile.id}/#{nii_basename}",nii_basename)
-      #make_available(userfile,"#{inputdir}/#{userfile.id}/bval",          "bval")
-      #make_available(userfile,"#{inputdir}/#{userfile.id}/bvec",          "bvec")
       safe_symlink(userfile.cache_full_path + nii_basename, "#{inputdir}/#{userfile.id}/#{nii_basename}")
       safe_symlink(userfile.cache_full_path + "bval"      , "#{inputdir}/#{userfile.id}/bval"           )
       safe_symlink(userfile.cache_full_path + "bvec"      , "#{inputdir}/#{userfile.id}/bvec"           )
@@ -56,13 +52,8 @@ class CbrainTask::Dipy < ClusterTask
     commands     = [ "SECONDS=0" ] # bash variable SECONDS will count time
     inputs.each do |userfile|
        commands << <<-"BASH_COMMANDS"
-
-         echo Executing dipy_simple_pipeline for #{userfile.get_nii_basename.bash_escape}
-         pushd #{inputdir}/#{userfile.id}
-         dipy_classic_flow #{userfile.get_nii_basename.bash_escape} bval bvec --out_strat absolute --out_dir #{inputdir}/#{userfile.id}/
-         #mv tensor.nii.gz work # clean
-         popd
-         #mv #{inputdir}/#{userfile.id}/work #{outputdir}/#{userfile.id} # keep all clean
+         echo Executing dipy_classic_flow for #{userfile.get_nii_basename.bash_escape}
+         dipy_classic_flow #{inputdir}/#{userfile.id}/#{userfile.get_nii_basename.bash_escape} #{inputdir}/#{userfile.id}/bval #{inputdir}/#{userfile.id}/bvec --out_strat absolute --out_dir #{outputdir}/#{userfile.id}/
          echo Done after $SECONDS seconds
 
        BASH_COMMANDS
