@@ -59,10 +59,10 @@ class CbrainTask::Dipy < ClusterTask
 
          echo Executing dipy_simple_pipeline for #{userfile.get_nii_basename.bash_escape}
          pushd #{inputdir}/#{userfile.id}
-         dipy_simple_pipeline #{userfile.get_nii_basename.bash_escape} bval bvec
-         mv tensor.nii.gz work # clean
+         dipy_classic_flow #{userfile.get_nii_basename.bash_escape} bval bvec --out_strat absolute --out_dir #{inputdir}/#{userfile.id}/
+         #mv tensor.nii.gz work # clean
          popd
-         mv #{inputdir}/#{userfile.id}/work #{outputdir}/#{userfile.id} # keep all clean
+         #mv #{inputdir}/#{userfile.id}/work #{outputdir}/#{userfile.id} # keep all clean
          echo Done after $SECONDS seconds
 
        BASH_COMMANDS
@@ -123,4 +123,3 @@ class CbrainTask::Dipy < ClusterTask
   end
 
 end
-
