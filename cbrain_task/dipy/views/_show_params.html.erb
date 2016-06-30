@@ -8,6 +8,19 @@
 <% end %>
 </UL>
 
+<br/>
+<STRONG>B0 Threshold:</STRONG>
+<%= params[:b0_threshold].to_s %>
+
+<br/>
+<STRONG>NLMeans sigma:</STRONG>
+<%= params[:sigma].to_s %>
+
+<br/>
+<STRONG>Fiber response function:</STRONG>
+<%= params[:frf].to_s %>
+
+
 <BR>
 <STRONG>Outputs:</STRONG>
 <P>
@@ -21,4 +34,3 @@
 <% if params[:output_ids].blank? %>
   (No output produced yet)
 <% end %>
-
