@@ -21,7 +21,9 @@ class CbrainTask::Dipy < ClusterTask
     # Prep work area
     inputdir     = "Inputs-#{run_number}"
     outputdir    = "Outputs-#{run_number}"
+    addlog("MKDIR")
     safe_mkdir(inputdir)
+    addlog("MKDIR DONE")
     safe_mkdir(outputdir)
 
     inputs.each do |userfile|
@@ -55,6 +57,8 @@ class CbrainTask::Dipy < ClusterTask
     inputdir     = "Inputs-#{run_number}"
     outputdir    = "Outputs-#{run_number}"
 
+
+    addlog("Start clusteR_commands")
     # Build bash commands for each execution
     commands     = [ "SECONDS=0" ] # bash variable SECONDS will count time
     inputs.each do |userfile|
