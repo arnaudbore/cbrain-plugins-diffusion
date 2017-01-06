@@ -1,0 +1,40 @@
+
+<STRONG>Input:</STRONG>
+<P>
+
+<UL>
+<% (params[:interface_userfile_ids].presence || []).each do |id| %>
+  <LI>Userfile: <%= link_to_userfile_if_accessible id %></LI>
+<% end %>
+</UL>
+
+<br/>
+<STRONG>B0 Threshold:</STRONG>
+<%= params[:b0_threshold].to_s %>
+
+<br/>
+<STRONG>NLMeans sigma:</STRONG>
+<%= params[:sigma].to_s %>
+
+<br/>
+<STRONG>Fiber response function:</STRONG>
+<%= params[:frf].to_s %>
+
+<br/>
+<STRONG>Dicom tag:</STRONG>
+<%= params[:tag].to_s %>
+
+
+<BR>
+<STRONG>Outputs:</STRONG>
+<P>
+
+<UL>
+<% (params[:output_ids].presence || []).each do |id| %>
+  <LI>Userfile: <%= link_to_userfile_if_accessible id %></LI>
+<% end %>
+</UL>
+
+<% if params[:output_ids].blank? %>
+  (No output produced yet)
+<% end %>

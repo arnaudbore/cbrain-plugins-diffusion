@@ -1,0 +1,19 @@
+
+<H3>Dipy Simple Pipeline</H3>
+
+List of Userfiles selected:<BR>
+
+<UL>
+  <% (params[:interface_userfile_ids].presence || []).each do |id| %>
+  <LI><%= link_to_userfile_if_accessible(id) %></LI>
+  <% end %>
+</UL>
+
+<P>
+
+NLMeans sigma: </br>
+<%= form.params_text_field :sigma %></br>
+B0 theshold: </br>
+<%= form.params_text_field :b0_threshold %></br>
+Fiber response function: </br>
+<%= form.params_text_field :frf %></br>
