@@ -1,5 +1,5 @@
 
-# A subclass of CbrainTask to launch Dipy.
+# A subclass of CbrainTask to launch a diffusion pipeline.
 class CbrainTask::DiffDicom < PortalTask
 
   Revision_info=CbrainFileRevision[__FILE__] #:nodoc:
@@ -20,8 +20,8 @@ class CbrainTask::DiffDicom < PortalTask
   def before_form #:nodoc:
     params = self.params
     ids    = params[:interface_userfile_ids]
-    how_man_are_dipy_inputs = DipyInput.where(:id => ids).count
-    cb_error "Not all selected files are Dipy Input files.\n" unless ids.size == how_man_are_dipy_inputs
+    # how_man_are_dipy_inputs = DipyInput.where(:id => ids).count
+    # cb_error "Not all selected files are Dipy Input files.\n" unless ids.size == how_man_are_dipy_inputs
     ""
   end
 
