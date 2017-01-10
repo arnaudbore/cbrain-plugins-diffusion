@@ -16,7 +16,7 @@ class CbrainTask::DiffDicom < ClusterTask
   def setup #:nodoc:
     params       = self.params
     ids          = params[:interface_userfile_ids] || []
-    inputs       = DipyInput.find(ids)
+    inputs       = TarArchive.find(ids)
 
     # Prep work area
     inputdir     = "Inputs-#{run_number}"
@@ -45,7 +45,7 @@ class CbrainTask::DiffDicom < ClusterTask
     b0_threshold = params[:b0_threshold]
     frf          = params[:frf]
 
-    inputs       = DipyInput.find(ids)
+    inputs       = TarArchive.find(ids)
 
     inputdir     = "Inputs-#{run_number}"
     outputdir    = "Outputs-#{run_number}"
@@ -70,7 +70,7 @@ class CbrainTask::DiffDicom < ClusterTask
   def save_results #:nodoc:
     params       = self.params
     ids          = params[:interface_userfile_ids] || []
-    inputs       = DipyInput.find(ids)
+    inputs       = TarArchive.find(ids)
 
     #inputdir     = "Inputs-#{run_number}" # not used here
     outputdir    = "Outputs-#{run_number}"
