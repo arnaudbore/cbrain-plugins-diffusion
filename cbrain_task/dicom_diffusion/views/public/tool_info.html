@@ -1,14 +1,11 @@
 
-<h1>Dicom diffusion pipeline</h1>
+<h1>Diffusion pipeline</h1>
 
-<h3>The dicom diffusion pipeline processes dicom diffusion MRI data and outputs
-    various DTI and HARDI metrics.
+<h3>The diffusion pipeline processes diffusion MRI data and outputs various
+DTI and HARDI metrics.
 </h3>
 <ul>
     Step by step procedure:
-    <li>Dicom conversion to nifti (via MRTrix's mrconvert)</li>
-    <li>Gradient direction and intensity extraction (via MRTrix's mrinfo)</li>
-    <li>Brain extraction (via FSL bet)</li>
     <li>Brain extraction (via FSL bet)</li>
     <li>Denoising with the NLMeans alorithm</li>
     <li>DTI metrics computation</li>
