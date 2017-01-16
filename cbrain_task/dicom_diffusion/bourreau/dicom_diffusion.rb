@@ -1,6 +1,6 @@
 
 # A subclass of CbrainTask::ClusterTask to run the diffusion pipeline using dicom files.
-class CbrainTask::DiffDicom < ClusterTask
+class CbrainTask::DicomDiffusion < ClusterTask
 
   Revision_info=CbrainFileRevision[__FILE__] #:nodoc:
 

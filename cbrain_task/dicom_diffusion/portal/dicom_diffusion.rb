@@ -1,6 +1,6 @@
 
 # A subclass of CbrainTask to launch a diffusion pipeline.
-class CbrainTask::DiffDicom < PortalTask
+class CbrainTask::DicomDiffusion < PortalTask
 
   Revision_info=CbrainFileRevision[__FILE__] #:nodoc:
 
