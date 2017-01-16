@@ -54,7 +54,11 @@ class CbrainTask::DicomDiffusion < ClusterTask
     commands     = [ "SECONDS=0" ] # bash variable SECONDS will count time
     inputs.each do |userfile|
       indir = "#{inputdir}/#{userfile.id}"
-      cmdl_params =  "#{indir}/dwi_archive.tar --out_strat absolute --out_dir #{outputdir}/#{userfile.id}/ --tag #{tag} --nlmeans.sigma #{sigma} --csd.frf #{frf} --csd.b0_threshold #{b0_threshold} --csa.b0_threshold #{b0_threshold} --dti.b0_threshold #{b0_threshold}"
+      if tag == ""
+        fulltag = ""
+      else
+        fulltag = "--tag #{tag}"
+      cmdl_params =  "#{indir}/dwi_archive.tar --out_strat absolute --out_dir #{outputdir}/#{userfile.id}/ #{fulltag} --nlmeans.sigma #{sigma} --csd.frf #{frf} --csd.b0_threshold #{b0_threshold} --csa.b0_threshold #{b0_threshold} --dti.b0_threshold #{b0_threshold}"
 
       commands << <<-"BASH_COMMANDS"
          echo Executing dipy_dicom_fodf_pipeline_fsl
