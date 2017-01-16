@@ -31,7 +31,7 @@ class CbrainTask::DicomDiffusion < ClusterTask
       # Because the current dipy_simple_pipeline script is not clean with its
       # inputs, we have to create a dummy input structure
       safe_mkdir("#{inputdir}/#{userfile.id}")
-      safe_symlink(userfile.cache_full_path, "#{inputdir}/#{userfile.id}")
+      safe_symlink(userfile.cache_full_path, "#{inputdir}/#{userfile.id}/dwi_archive.tar")
     end
     true
   end
