@@ -54,10 +54,13 @@ class CbrainTask::DicomDiffusion < ClusterTask
     commands     = [ "SECONDS=0" ] # bash variable SECONDS will count time
     inputs.each do |userfile|
       indir = "#{inputdir}/#{userfile.id}"
+
       if tag == ""
         fulltag = ""
       else
         fulltag = "--tag #{tag}"
+      end
+
       cmdl_params =  "#{indir}/dwi_archive.tar --out_strat absolute --out_dir #{outputdir}/#{userfile.id}/ #{fulltag} --nlmeans.sigma #{sigma} --csd.frf #{frf} --csd.b0_threshold #{b0_threshold} --csa.b0_threshold #{b0_threshold} --dti.b0_threshold #{b0_threshold}"
 
       commands << <<-"BASH_COMMANDS"
