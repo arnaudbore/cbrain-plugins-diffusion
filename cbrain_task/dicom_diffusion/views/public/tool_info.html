@@ -6,6 +6,8 @@ DTI and HARDI metrics.
 </h3>
 <ul>
     Step by step procedure:
+    <li>Dicom conversion to nifti (via Mrtrix's mrconvert)</li>
+    <li>Gradient information extraction (via Mrtrix's mrinfo)</li>
     <li>Brain extraction (via FSL bet)</li>
     <li>Denoising with the NLMeans alorithm</li>
     <li>DTI metrics computation</li>
