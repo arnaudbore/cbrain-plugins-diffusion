@@ -55,10 +55,10 @@ class CbrainTask::DicomDiffusion < ClusterTask
     inputs.each do |userfile|
       indir = "#{inputdir}/#{userfile.id}"
 
-      if tag == ""
-        fulltag = ""
+      if my_string.to_s == ''
+        fulltag = ''
       else
-        fulltag = "--tag #{tag}"
+        fulltag = '--tag #{tag}'
       end
 
       cmdl_params =  "#{indir}/dwi_archive.tar --out_strat absolute --out_dir #{outputdir}/#{userfile.id}/ #{fulltag} --nlmeans.sigma #{sigma} --csd.frf #{frf} --csd.b0_threshold #{b0_threshold} --csa.b0_threshold #{b0_threshold} --dti.b0_threshold #{b0_threshold}"
