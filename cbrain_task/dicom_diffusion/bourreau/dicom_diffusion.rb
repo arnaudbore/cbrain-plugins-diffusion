@@ -55,7 +55,7 @@ class CbrainTask::DicomDiffusion < ClusterTask
     inputs.each do |userfile|
       indir = "#{inputdir}/#{userfile.id}"
 
-      if my_string.to_s == ''
+      if tag.to_s == ''
         fulltag = ''
       else
         fulltag = '--tag #{tag}'
